@@ -23,7 +23,7 @@ Shipment Tracking Management provides operations to track shipments.
 ### Komentari
 - modeli možda nisu pravilo spojeni kako bi u stvarnom sustavu trebali, uglavnom su samo OneToOne ili OneToMany kako bi aplikacija radila pravilno
 - napravljen je dohvat podataka preko statusa(enum) na endpointu /shipmentTracking/status/{status}
-- napravljen je dohvat podataka sa složenim kriterijem između dva datuma /shipmentTracking/date/{date1}/{date2}
+- napravljen je dohvat podataka sa složenim kriterijem između dva datuma /shipmentTracking/date/{date1}/{date2} (date1 < date2)
 - baza je postavljena kao lokalna postgresql baza na portu 5432 sa imenom "test"
 - u data.sql fileu je ubaceno par tablica radi testiranja sustava
 
