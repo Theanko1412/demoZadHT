@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
-@RequestMapping("/shipmenttracking")
+@RequestMapping(value ="/shipmentTracking")
 public class ShipmentTrackingController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class ShipmentTrackingController {
     private ShipmentTrackingService service;
 
 
-    @GetMapping()
+    @GetMapping("")
     public List<ShipmentTracking> getShipment() {
         return repository.findAll();
     }
@@ -51,7 +51,7 @@ public class ShipmentTrackingController {
         return repository.listAllBetweenCreationDates(date1, date2);
     }
 
-    @PostMapping()
+    @PostMapping("")
     public ResponseEntity<ShipmentTracking> createShipment(@RequestBody ShipmentTracking Shipmenttracking) {
         ShipmentTracking saved = service.createShipment(Shipmenttracking);
         return ResponseEntity.created(URI.create("/" + saved.getId())).body(saved);

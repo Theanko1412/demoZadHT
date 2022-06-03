@@ -3,7 +3,8 @@ package com.ht.demozad.ShipmentTracking;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.fge.jsonpatch.JsonPatch;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.fge.jsonpatch.JsonPatchException;
 import com.github.fge.jsonpatch.mergepatch.JsonMergePatch;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,9 +59,17 @@ public class ShipmentTrackingJPAImpl implements ShipmentTrackingService{
         return shipmentTracking;
     }
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    //problem sa koristenjem patch sa varijablom tipa LocalTime
+    public ObjectMapper ObjectMapperContextResolver() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        return objectMapper;
+    }
+
     @Override
     public ShipmentTracking applyPatchToShipment(JsonMergePatch patch, ShipmentTracking shipmentTracking) throws JsonPatchException, JsonProcessingException {
+        ObjectMapper objectMapper = ObjectMapperContextResolver();
         JsonNode patched = patch.apply(objectMapper.convertValue(shipmentTracking, JsonNode.class));
         return objectMapper.treeToValue(patched, ShipmentTracking.class);
     }

@@ -1,0 +1,11 @@
+insert into address (id, country, city, full_address_name, href, locality, note, postcode, state_or_province, street_name, street_nr, street_nr_last, street_nr_last_suffix, street_nr_suffix, street_suffix, street_type, address_role_id, address_spec_ref_id, audit_id, geo_code_id, location_id, valid_for_id) values
+('prva', NULL, NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert into address (id, country, city, full_address_name, href, locality, note, postcode, state_or_province, street_name, street_nr, street_nr_last, street_nr_last_suffix, street_nr_suffix, street_suffix, street_type, address_role_id, address_spec_ref_id, audit_id, geo_code_id, location_id, valid_for_id) values
+('druga', NULL, NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+insert into shipment_tracking (id, carrier, carrier_tracking_url, create_date, estimated_delivery_date, href, status, status_change_date, status_change_reason, tracking_code, tracking_date, weight, address_from_id, address_to_id, related_customer_id) values
+('4028b881812987c401812988e84b0007', NULL, NULL, '2018-05-05', NULL, NULL, 'error', NULL, NULL, NULL, NULL, NULL, 'prva', 'druga', NULL);
+insert into shipment_tracking (id, carrier, carrier_tracking_url, create_date, estimated_delivery_date, href, status, status_change_date, status_change_reason, tracking_code, tracking_date, weight, address_from_id, address_to_id, related_customer_id) values
+    ('4028b881812987c401812988d9870003', NULL, NULL, '2019-05-05', NULL, NULL, 'error', NULL, NULL, NULL, NULL, NULL, 'druga', 'prva', NULL);
+insert into shipment_tracking (id, carrier, carrier_tracking_url, create_date, estimated_delivery_date, href, status, status_change_date, status_change_reason, tracking_code, tracking_date, weight, address_from_id, address_to_id, related_customer_id) values
+    ('4028b881812987c401812988e4550006', NULL, NULL, '2020-05-05', NULL, NULL, 'shipped', NULL, NULL, NULL, NULL, NULL, 'druga', 'prva', NULL);
